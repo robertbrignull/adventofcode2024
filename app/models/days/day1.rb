@@ -19,16 +19,21 @@ module Days
     end
 
     def part2
+      t = 0
+      for l in left_numbers
+        t += l * right_numbers.filter { |r| r == l }.length
+      end
+      t
     end
 
     private
 
     def left_numbers
-      input.split("\n").map { |l| l.split(" ").first.to_i }
+      @left_numbers ||= input.split("\n").map { |l| l.split(" ").first.to_i }
     end
 
     def right_numbers
-      input.split("\n").map { |l| l.split(" ").second.to_i }
+      @right_numbers ||= input.split("\n").map { |l| l.split(" ").second.to_i }
     end
   end
 end
