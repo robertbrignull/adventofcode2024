@@ -16,7 +16,8 @@ class DaysController < ApplicationController
 
   def days
     [
-      Days::Day1.new
+      Days::Day1.new,
+      Days::Day2.new
     ]
   end
 
