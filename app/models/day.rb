@@ -3,6 +3,10 @@ class Day
   def part1; raise NotImplementedError; end
   def part2; raise NotImplementedError; end
 
+  def number
+    self.class.name.split("::").last.sub("Day", "").to_i
+  end
+
   def title
     "Day #{number}"
   end

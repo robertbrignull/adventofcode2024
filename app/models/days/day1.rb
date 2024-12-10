@@ -1,9 +1,5 @@
 module Days
   class Day1 < Day
-    def number
-      1
-    end
-
     def part1
       ls = left_numbers.sort
       rs = right_numbers.sort

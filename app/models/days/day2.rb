@@ -1,9 +1,5 @@
 module Days
   class Day2 < Day
-    def number
-      2
-    end
-
     def part1
       reports.filter { |r| r.safe?(false) }.length
     end
