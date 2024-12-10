@@ -8,8 +8,8 @@ class DaysController < ApplicationController
     raise ActionController::RoutingError.new("Day not Found") unless model
 
     @title = model.title
-    @part1 = model.part1
-    @part2 = model.part2
+    @part1, @part1_time = time_it { model.part1 }
+    @part2, @part2_time = time_it { model.part2 }
   end
 
   private
@@ -18,5 +18,11 @@ class DaysController < ApplicationController
     [
       Days::Day1.new
     ]
+  end
+
+  def time_it(&block)
+    start = Time.now
+    result = block.call
+    [ result, ((Time.now - start) * 1000).round ]
   end
 end
