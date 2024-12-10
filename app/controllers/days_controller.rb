@@ -1,23 +1,22 @@
 class DaysController < ApplicationController
   def index
-    @days = days.map do |number, model|
-      { title: "Day #{number}", path: day_path(number) }
-    end
+    @days = days
   end
 
   def show
-    model = days[params[:number].to_i]
+    model = days[params[:number].to_i - 1]
     raise ActionController::RoutingError.new("Day not Found") unless model
 
-    @title = "Day #{params[:number]}"
-
-    @part1_result = model.part1
-    @part2_result = model.part2
+    @title = model.title
+    @part1 = model.part1
+    @part2 = model.part2
   end
 
   private
 
   def days
-    {}
+    [
+      Days::Day1.new
+    ]
   end
 end
