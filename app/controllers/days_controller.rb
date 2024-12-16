@@ -20,7 +20,8 @@ class DaysController < ApplicationController
       Days::Day2.new,
       Days::Day3.new,
       Days::Day4.new,
-      Days::Day5.new
+      Days::Day5.new,
+      Days::Day6.new
     ]
   end
 
