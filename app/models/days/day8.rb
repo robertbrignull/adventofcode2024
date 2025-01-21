@@ -22,6 +22,34 @@ module Days
     end
 
     def part2
+      points = Set.new
+
+      for i in 0...antennas.length
+        for j in i+1...antennas.length
+          if antennas[i].frequency == antennas[j].frequency
+            dx = antennas[j].x - antennas[i].x
+            dy = antennas[j].y - antennas[i].y
+
+            k = 0
+            loop do
+              n = Point.new(x: antennas[i].x + dx * k, y: antennas[i].y + dy * k)
+              break if !n.on_grid?(width, height)
+              points.add(n)
+              k -= 1
+            end
+
+            k = 1
+            loop do
+              n = Point.new(x: antennas[i].x + dx * k, y: antennas[i].y + dy * k)
+              break if !n.on_grid?(width, height)
+              points.add(n)
+              k += 1
+            end
+          end
+        end
+      end
+
+      points.size.to_s
     end
 
     private
