@@ -26,6 +26,9 @@ module Days
 
     # Can the target value be reached by adding + or * operations between the operands?
     def value_possible?(target, operands, allow_concatenation: false)
+      # All operations increase the value, so we can abort early if the target is less than the first operand
+      return false if target < operands[0]
+
       if operands.length == 1
         operands.first == target
       else
