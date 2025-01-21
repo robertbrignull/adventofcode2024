@@ -1,7 +1,7 @@
 module Days
   class Day9 < Day
     def part1
-      m = new_disk_map.compact!
+      m = Disk.new(input.chars.map(&:to_i)).compact!
 
       total = 0
       m.disk.each_with_index do |v, i|
@@ -15,11 +15,7 @@ module Days
 
     private
 
-    def new_disk_map
-      DiskMap.new(input.chars.map(&:to_i))
-    end
-
-    class DiskMap
+    class Disk
       attr_reader :disk
 
       def initialize(disk_map)
